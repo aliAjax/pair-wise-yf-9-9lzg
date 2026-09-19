@@ -3,24 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>桌游规则遗忘点卡片库</title>
+    <title>桌游规则复习卡库</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="shell">
       <header class="topbar">
         <div>
-          <p class="eyebrow">聚会前快速复习</p>
-          <h1>桌游规则遗忘点卡片库</h1>
+          <p class="eyebrow">聚会前快速复习 · 开局逐卡确认</p>
+          <h1>桌游规则复习卡库</h1>
         </div>
         <div class="summary">
           <div>
-            <span>收藏</span>
+            <span>收藏游戏</span>
             <strong id="gameCount">0</strong>
           </div>
           <div>
-            <span>遗忘点</span>
+            <span>未掌握规则</span>
             <strong id="ruleCount">0</strong>
+          </div>
+          <div>
+            <span>开局记录</span>
+            <strong id="recordCount">0</strong>
           </div>
           <div>
             <span>最久未玩</span>
@@ -42,6 +46,8 @@
             <option value="3">适合3人</option>
             <option value="4">适合4人</option>
             <option value="5">适合5人</option>
+            <option value="6">适合6人</option>
+            <option value="7+">7人及以上</option>
           </select>
         </label>
         <label>
@@ -56,7 +62,7 @@
         <label>
           排序
           <select id="sortMode">
-            <option value="stale">最近未玩</option>
+            <option value="stale">最久未玩优先</option>
             <option value="name">名称</option>
             <option value="complexity">复杂度</option>
           </select>
@@ -65,10 +71,10 @@
 
       <section class="layout">
         <aside class="panel">
-          <h2>新增桌游</h2>
+          <h2>录入桌游</h2>
           <form id="gameForm" class="game-form">
             <label>
-              名称
+              游戏名称
               <input id="nameInput" required placeholder="例：勃艮第城堡" />
             </label>
             <div class="split">
@@ -81,35 +87,25 @@
                 <input id="maxPlayersInput" type="number" min="1" max="12" value="4" required />
               </label>
             </div>
-            <div class="split">
-              <label>
-                时长分钟
-                <input id="durationInput" type="number" min="5" value="90" required />
-              </label>
-              <label>
-                复杂度
-                <select id="complexityInput">
-                  <option value="轻">轻</option>
-                  <option value="中" selected>中</option>
-                  <option value="重">重</option>
-                </select>
-              </label>
-            </div>
             <label>
-              上次游玩
+              复杂度
+              <select id="complexityInput">
+                <option value="轻">轻</option>
+                <option value="中" selected>中</option>
+                <option value="重">重</option>
+              </select>
+            </label>
+            <label>
+              上次游玩日期
               <input id="lastPlayedInput" type="date" required />
             </label>
-            <label>
-              封面图
-              <input id="coverInput" type="file" accept="image/*" />
-            </label>
-            <button class="primary" type="submit">加入收藏</button>
+            <button class="primary" type="submit">加入卡库</button>
           </form>
         </aside>
 
         <section class="panel list-panel">
           <div class="panel-head">
-            <h2>收藏列表</h2>
+            <h2>游戏列表</h2>
             <span id="visibleCount"></span>
           </div>
           <div id="gameList" class="game-list"></div>
@@ -118,6 +114,14 @@
         <aside class="panel detail-panel">
           <div id="detailView"></div>
         </aside>
+      </section>
+
+      <section class="panel records-panel">
+        <div class="panel-head">
+          <h2>开局记录</h2>
+          <span id="recordHint">成功开局后自动保留一条</span>
+        </div>
+        <div id="recordList" class="record-list"></div>
       </section>
     </main>
 

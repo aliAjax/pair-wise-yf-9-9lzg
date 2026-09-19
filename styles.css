@@ -124,7 +124,7 @@ h3 {
 
 .summary {
   display: grid;
-  grid-template-columns: repeat(3, minmax(108px, 1fr));
+  grid-template-columns: repeat(4, minmax(96px, 1fr));
   gap: 10px;
 }
 
@@ -254,6 +254,18 @@ label {
   font-weight: 900;
 }
 
+.session-ribbon {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
 .game-body {
   padding: 11px;
 }
@@ -280,6 +292,11 @@ label {
 .pill.heavy {
   background: rgba(116, 100, 155, 0.13);
   color: var(--lavender);
+}
+
+.pill.session {
+  background: rgba(57, 116, 91, 0.14);
+  color: var(--green);
 }
 
 .detail-panel {
@@ -347,11 +364,140 @@ label {
   padding-bottom: 0;
 }
 
-.rule-list button {
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  flex: 0 0 auto;
+.rule-list li.mastered .rule-text {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.rule-main {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+}
+
+.rule-tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rule-tools button {
+  padding: 4px 9px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.confirm-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.confirm-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--green);
+}
+
+.session-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.session-panel.prep {
+  border-color: rgba(49, 95, 134, 0.45);
+}
+
+.session-panel.active {
+  border-color: var(--green);
+  background: rgba(57, 116, 91, 0.06);
+}
+
+.session-panel.blocked {
+  border-color: rgba(179, 72, 72, 0.5);
+  background: rgba(179, 72, 72, 0.06);
+}
+
+.session-panel h3 {
+  margin-bottom: 0;
+}
+
+.session-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.session-head .pending {
+  color: var(--yellow);
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.session-head .ok {
+  color: var(--green);
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hint.fits {
+  color: var(--green);
+}
+
+.hint.blocked-text {
+  color: var(--red);
+}
+
+.session-row {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+}
+
+.players-label {
+  flex: 1 1 110px;
+}
+
+.session-row button {
+  flex: 1;
+  white-space: nowrap;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.progress {
+  height: 8px;
+  border-radius: 999px;
+  background: #e3e7ea;
+  overflow: hidden;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  background: var(--green);
+  border-radius: 999px;
+  transition: width 0.2s ease;
 }
 
 .add-rule {
@@ -367,6 +513,51 @@ label {
 
 .detail-actions button {
   flex: 1;
+}
+
+.records-panel {
+  margin-top: 16px;
+}
+
+.record-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px 12px;
+}
+
+.record-item div {
+  display: grid;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.record-item strong {
+  font-size: 14px;
+}
+
+.record-item span,
+.record-item time {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.record-item button {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  flex: 0 0 auto;
 }
 
 @media (max-width: 1160px) {
